@@ -6,10 +6,7 @@
 require("react-tap-event-plugin")();
 
 var React = window.React = require('react'),
-    mui = require('material-ui'),
-    AppCanvas = mui.AppCanvas,
-    AppBar = mui.AppBar,
-    LeftNav = mui.LeftNav,
+    {AppCanvas, AppBar, LeftNav} = require('material-ui'),
     mountNode = document.getElementById("app");
 
 var Greenback = React.createClass({
