@@ -1,45 +1,53 @@
 /** @jsx React.DOM */
+//Needed for onTouchTap
+//Can go away when react 1.0 release
+//Check this repo:
+//https://github.com/zilverline/react-tap-event-plugin
+require("react-tap-event-plugin")();
 
 var React = window.React = require('react'),
-    Timer = require("./ui/Timer"),
+    mui = require('material-ui'),
+    AppCanvas = mui.AppCanvas,
+    AppBar = mui.AppBar,
+    LeftNav = mui.LeftNav,
     mountNode = document.getElementById("app");
 
-var TodoList = React.createClass({
-  render: function() {
-    var createItem = function(itemText) {
-      return <li>{itemText}</li>;
-    };
-    return <ul>{this.props.items.map(createItem)}</ul>;
-  }
-});
-var TodoApp = React.createClass({
+var Greenback = React.createClass({
   getInitialState: function() {
-    return {items: [], text: ''};
+    return {};
   },
-  onChange: function(e) {
-    this.setState({text: e.target.value});
-  },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var nextItems = this.state.items.concat([this.state.text]);
-    var nextText = '';
-    this.setState({items: nextItems, text: nextText});
+  _onMenuIconButtonTouchTap: function(e) {
+    this.refs.nav.toggle();
   },
   render: function() {
     return (
-      <div>
-        <h3>TODO</h3>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-        <Timer />
-      </div>
+      <AppCanvas predefinedLayout={1}>
+
+        <AppBar
+          className='mui-dark-theme'
+          onMenuIconButtonTouchTap={this._onMenuIconButtonTouchTap}
+          title='greenback'
+          zDepth={0}>
+        </AppBar>
+
+        <LeftNav ref='nav' docked={false} menuItems={['Stuff']} />
+
+        <div className="mui-app-content-canvas">
+          <h3>Content</h3>
+        </div>
+
+        <div className='footer full-width-section mui-dark-theme'>
+          <p>
+            &copy; Society of Software Engineers 2015
+          </p>
+        </div>
+
+      </AppCanvas>
     );
   }
 });
 
 
-React.renderComponent(<TodoApp />, mountNode);
+React.render(<Greenback />, mountNode);
 
+module.exports = app;

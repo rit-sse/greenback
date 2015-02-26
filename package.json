@@ -22,7 +22,8 @@
     "material-ui": "latest",
     "watchify": "~2.1",
     "browserify-shim": "^3.8.0",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-source-stream": "^1.0.0",
+    "react-tap-event-plugin": "latest"
   },
   "engines": {
     "node": ">=0.10.0"
