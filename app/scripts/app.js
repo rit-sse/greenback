@@ -6,7 +6,7 @@
 require("react-tap-event-plugin")();
 
 var React = window.React = require('react'),
-    {AppCanvas, AppBar, LeftNav} = require('material-ui'),
+    {AppCanvas, AppBar, LeftNav, RaisedButton, Paper} = require('material-ui'),
     mountNode = document.getElementById("app");
 
 var Greenback = React.createClass({
@@ -17,6 +17,7 @@ var Greenback = React.createClass({
     this.refs.nav.toggle();
   },
   render: function() {
+    var styles = {margin: '5px'};
     return (
       <AppCanvas predefinedLayout={1}>
 
@@ -29,8 +30,8 @@ var Greenback = React.createClass({
 
         <LeftNav ref='nav' docked={false} menuItems={['Stuff']} />
 
-        <div className="mui-app-content-canvas">
-          <h3>Content</h3>
+        <div className='mui-app-content-canvas'>
+          <RaisedButton label="Test" primary={true} style={styles} />
         </div>
 
         <div className='footer full-width-section mui-dark-theme'>
